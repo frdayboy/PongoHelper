@@ -350,6 +350,10 @@ void hexdump(const char *cmd, char *args) {
     _hexdump(addr, len);
 }
 
+void getfb() {
+    printf("Framebuffer address: %x", gFramebuffer);
+}
+
 void module_entry() {
     printf("Got preboot_hook: 0x%llx\n", preboot_hook);
     existing_preboot_hook = preboot_hook;
@@ -371,6 +375,7 @@ void module_entry() {
     command_register("dumpvars", "Dump runtime vars", dump_runtime_vars);
     command_register("memmap", "Print memmap", print_memmap);
     command_register("hexdump", "Hexdump", hexdump);
+    command_register("getfb", "Prints framebuffer address" getfb);
 }
 
 char* module_name = "test_module";
